@@ -1,38 +1,112 @@
-.App {
-  text-align: center;
+body {
+  background-color: #f5f5f5;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  max-width: 1080px;
+  margin: 1rem auto !important;
+  float: none !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.card-grid {
+  display: grid;
   align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  position: relative;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.3);
+  background-color: white;
+
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(var(--rotate-y, 0))
+    translateY(var(--translate-y, 0));
+  transition: 150ms;
+  cursor: pointer;
+}
+.card:hover {
+  --translate-y: -6px;
+  box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.7);
+}
+.card.flip {
+  --rotate-y: 180deg;
+}
+.card .front {
+  left: 0;
+}
+.card .front,
+.card .back {
+  position: absolute;
+  padding: 1rem;
+  backface-visibility: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.card .back {
+  transform: rotateY(180deg);
+}
+.flashcard-options {
+  margin: 0.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.flashcard-option-true {
+  display: inline-block;
+  padding: 0.75rem;
+  margin: 0.5rem;
+  background-color: #f5f5f5;
+  border: 2px solid #56b159;
+  border-radius: 1rem;
+
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.flashcard-option-false {
+  display: inline-block;
+  padding: 0.75rem;
+  margin: 0.5rem;
+  background-color: #f50b0b;
+  border: 2px solid #fff;
+  border-radius: 1rem;
+
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.flashcard-option:hover {
+  --translate-y: -2px;
+  box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.2);
+}
+.flashcard-option:first-child {
+  margin-top: 0;
+}
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: relative;
+}
+#navbar p {
+  float: left;
+  display: block;
+  color: #ee5738;
+  text-align: center;
+  font-size: 2rem;
+  padding: 14px 16px;
+}
+
+#navbar span {
+  float: right;
+  display: block;
+  color: #f05123;
+  text-align: center;
+  padding: 14px 16px;
+  margin: 2rem 0.25rem;
+  text-decoration: none;
+  font-size: 2rem;
+  cursor: pointer;
 }
