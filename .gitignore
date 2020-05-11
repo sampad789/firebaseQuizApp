@@ -9,7 +9,8 @@
 /coverage
 
 #config file 
-/src/utils/config.js
+'./src/utils/config.js'
+
 # production
 /build
 
