@@ -39,6 +39,10 @@ export default function Flashcard({ flashcard, score }) {
       db.ref("/").update({
         score: score + 1,
       });
+      const timer = setTimeout(() => {
+        setFlip(flip);
+      }, 3000);
+      return () => clearTimeout(timer);
     } else {
       setColor(false);
       db.ref("/").update({
