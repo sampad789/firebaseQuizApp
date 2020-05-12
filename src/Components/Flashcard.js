@@ -39,10 +39,12 @@ export default function Flashcard({ flashcard, score }) {
       db.ref("/").update({
         score: score + 1,
       });
-      const timer = setTimeout(() => {
+
+      // Question can be answered multiple times
+      /*  const timer = setTimeout(() => {
         setFlip(flip);
       }, 3000);
-      return () => clearTimeout(timer);
+      return () => clearTimeout(timer);*/
     } else {
       setColor(false);
       db.ref("/").update({
